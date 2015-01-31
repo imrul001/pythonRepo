@@ -36,6 +36,7 @@ def calculate_query_length(length, qStart,qEnd):
 length=file_len("20150128_c01_Trinity_BLASTN_UNIQ.fasta.lngth");
 tid=range(length);
 len=range(length);
+
 i=0;
 with open('20150128_c01_Trinity_BLASTN_UNIQ.fasta.lngth', 'rb') as csvfile:
     reader = csv.reader(csvfile, delimiter='\t')
