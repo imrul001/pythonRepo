@@ -11,34 +11,48 @@ def file_len(fname):
     return i + 1
 
 def search_id(file_name,id):
-    length=file_len(file_name);
-    for num in range(0,length):
-        with open(file_name, 'rb') as csvfile:
-            reader = csv.reader(csvfile, delimiter='\t')
-            for row in reader:
-                if row[0] ==  id:
-                    return True;
-                else:
-                    return False;
+    flag=0;
+    with open(file_name, 'rb') as csvfile:
+        reader = csv.reader(csvfile, delimiter='\t')
+        for row in reader:
+           # print 'row_0'+row[0]+' id_value'+id;
+            if row[0] ==  id:
+                flag=1;
+                break;
+            else:
+                flag=0;
+                continue;
+    if flag == 1:
+        return True;
+    else:
+        return False;
+
 
 def search_in_blast(blast_result_file_name,id):
-    length=file_len(blast_result_file_name);
-    for num in range(0,length):
-        with open(blast_result_file_name, 'rb') as csvfile:
-            for line in csvfile.readlines():
-                li = line.lstrip()
-                if not li.startswith("#"):
-                    values=re.split(r'\t', li.rstrip('\t'));
-                    if id ==  values[0]:
-                        return True;
-                    else:
-                        return False;
+    flag=0;
+    with open(blast_result_file_name, 'rb') as csvfile:
+        for line in csvfile.readlines():
+            li = line.lstrip()
+            if not li.startswith("#"):
+                values=re.split(r'\t', li.rstrip('\t'));
+                if id ==  values[0]:
+                    flag=1;
+                    break;
+                else:
+                    flag=0;
+                    continue;
+    if flag == 1:
+        return True;
+    else:
+        return False;
+
 
 def getResult(result):
     if result == True:
         return 1
     else:
         return 0
+        
 
 def getResultFromBlast(result):
     if result == True:
