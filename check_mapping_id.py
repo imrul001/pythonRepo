@@ -37,7 +37,7 @@ def search_id(file_name, id):
     if flag == 1:
         return des;
     else:
-        return Null;
+        return None;
 
 length=file_len("20150128_c01_Trinity_BLASTN_UNIQ.fasta.NT.C1.Criteria.out");
 tid=range(length);
