@@ -18,10 +18,10 @@ def search_id(file_name,id):
         for row in reader:
             if id == row[0]:
                 if i == 0:
-                    result=row[1]+row[2];
+                    result=row[1]+'|'+row[2];
                     i=i+1;
                 else:
-                    result=result+row[1]+row[2];
+                    result=result+'|'+row[1]+'|'+row[2];
                     i=i+1;
     if i == 0:
         return  None;
